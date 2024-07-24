@@ -6,11 +6,14 @@
 
 `docker run -d --name mysql-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=mysql" mysql`
 
+`docker run -d --name mysql-server -p 3306:3306 --nerwork aws-backend_default -e "MYSQL_ROOT_PASSWORD=mysql" mysql`
+
 ### 2. Create table in mysql
 `docker exec -it mysql-server mysql -u root -p mysql`
 
 `create database testdb;`
 
+`use testdb;`
 ```
 CREATE TABLE posts (
     id varchar(255),
