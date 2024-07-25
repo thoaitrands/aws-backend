@@ -1,12 +1,3 @@
-# Use the official Maven image for a build stage
-# FROM maven:3.8.6-jdk-11-slim AS build
-
-# # Copy the project files to the container
-# COPY src /home/app/src
-# COPY pom.xml /home/app
-
-# # Package the application
-# RUN mvn -f /home/app/pom.xml clean install -DskipTests
 
 # Use OpenJDK for the runtime stage
 FROM openjdk:11-jdk-slim

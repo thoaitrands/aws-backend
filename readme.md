@@ -4,25 +4,31 @@
 
 ### 1. Create new docker image mysql
 
-`docker run -d --name mysql-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=mysql" mysql`
-
-`docker run -d --name mysql-server -p 3306:3306 --nerwork aws-backend_default -e "MYSQL_ROOT_PASSWORD=mysql" mysql`
+```
+docker network create aws-training
+```
+```
+docker run -d --name mysql-server -p 3306:3306 --network aws-training -e "MYSQL_ROOT_PASSWORD=mysql" mysql
+```
 
 ### 2. Create table in mysql
 `docker exec -it mysql-server mysql -u root -p mysql`
 
-`create database testdb;`
-
-`use testdb;`
 ```
-CREATE TABLE posts (
-    id varchar(255),
-    title varchar(255),
-    published boolean,
-    tags varchar(255)
-);
+    create database testdb;
+
+    use testdb;
+
+    CREATE TABLE posts (
+        id varchar(255),
+        title varchar(255),
+        published boolean,
+        tags varchar(255)
+    );
 ```
 
+## How to build image
+`docker build -t thoaitrands/aws-backend:0.0.1 .`
 ## How to run
 
 ### 1. Run directory.
@@ -30,6 +36,9 @@ CREATE TABLE posts (
 
 ### 2. Run by jar file
 `java -jar target/aws-backend-0.0.1-SNAPSHOT.jar`
+
+### 3. Using by docker images
+`docker run --network aws-training -e DATABASE_URL=jdbc:mysql://mysql-server:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false thoaitrands/aws-backend:0.0.1`
 
 
 
