@@ -20,4 +20,4 @@ COPY aws-backend-0.0.1-SNAPSHOT.jar /usr/local/lib/aws-backend.jar
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-Dspring.profiles.active=default", "-jar", "/usr/local/lib/aws-backend.jar"]clear
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/aws-backend.jar"]

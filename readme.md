@@ -48,5 +48,11 @@ docker run -d --name mysql-server -p 3306:3306 --network aws-training -e "MYSQL_
     docker run --network aws-training -e DATABASE_URL=jdbc:mysql://mysql-server:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false thoaitrands/aws-backend:0.0.1 -e DATABASE_USER=root -e DATABASE_PASSWORD=mysql
 ```
 
+## Swagger
+
+```
+    java -jar -Dspring.datasource.url="jdbc:mysql://localhost:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false" -Dspring.datasource.username=root -Dspring.datasource.password=mysql target/aws-backend-0.0.1-SNAPSHOT.jar
+```
+Swagger UI: http://localhost:8080/swagger-ui.html
 
 

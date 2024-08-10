@@ -21,6 +21,10 @@ import com.training.aws_backend.model.Post;
 import com.training.aws_backend.model.PostRequest;
 import com.training.aws_backend.service.PostService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "Posts Management System")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/posts")
@@ -33,6 +37,7 @@ public class PostsController {
         this.postService = postService;
     }
 
+    @ApiOperation(value = "View a specific post", response = Post.class)
     @GetMapping("{id}")
     public ResponseEntity<Post> post(@PathVariable String id) {
         Optional<Post> post = postService.findById(id);
@@ -41,6 +46,7 @@ public class PostsController {
                                                   .build());
     }
 
+    @ApiOperation(value = "View a list of available posts", response = List.class)
     @GetMapping
     public List<Post> list(@RequestParam(required = false) String title) {
         if (StringUtils.isEmpty(title)) {
@@ -49,6 +55,7 @@ public class PostsController {
         return postService.findByTitle(title);
     }
 
+    @ApiOperation(value = "Save a new post")
     @PostMapping
     public void save(@RequestBody PostRequest request) {
         postService.save(request);
