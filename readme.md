@@ -27,18 +27,26 @@ docker run -d --name mysql-server -p 3306:3306 --network aws-training -e "MYSQL_
     );
 ```
 
-## How to build image
-`docker build -t thoaitrands/aws-backend:0.0.1 .`
-## How to run
+## How to build new image.
+```
+    docker build -t thoaitrands/aws-backend:0.0.1 .
+```
 
+## How to run.
 ### 1. Run directory.
-`mvn spring-boot:run`
+```
+    mvn spring-boot:run
+```
 
 ### 2. Run by jar file
-`java -jar target/aws-backend-0.0.1-SNAPSHOT.jar`
+```
+    java -jar target/aws-backend-0.0.1-SNAPSHOT.jar
+```
 
 ### 3. Using by docker images
-`docker run --network aws-training -e DATABASE_URL=jdbc:mysql://mysql-server:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false thoaitrands/aws-backend:0.0.1`
+```
+    docker run --network aws-training -e DATABASE_URL=jdbc:mysql://mysql-server:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false thoaitrands/aws-backend:0.0.1 -e DATABASE_USER=root -e DATABASE_PASSWORD=mysql
+```
 
 
 

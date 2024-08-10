@@ -21,7 +21,7 @@ import com.training.aws_backend.model.Post;
 import com.training.aws_backend.model.PostRequest;
 import com.training.aws_backend.service.PostService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/posts")
 public class PostsController {
